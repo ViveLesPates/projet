@@ -1,15 +1,21 @@
 package fr.espi.gl.quizz.web;
 
+import com.google.inject.Injector;
+import fr.espi.gl.quizz.web.configuration.QuizzRouter;
 import org.restlet.Application;
 import org.restlet.Restlet;
-import org.restlet.routing.Router;
 
 public class QuizzApplication extends Application {
 
+
+    public QuizzApplication(Injector injector) {
+        this.injector = injector;
+    }
+
     @Override
     public Restlet createInboundRoot() {
-        Router router = new Router();
-        router.attach("/hello", HelloResource.class);
-        return router;
+        return new QuizzRouter(getContext(), injector);
     }
+
+    private Injector injector;
 }
