@@ -3,13 +3,17 @@ package fr.espi.gl.quizz.web;
 import com.google.inject.Injector;
 import fr.espi.gl.quizz.web.configuration.QuizzRouter;
 import org.restlet.Application;
+import org.restlet.Context;
 import org.restlet.Restlet;
+import org.thymeleaf.TemplateEngine;
 
 public class QuizzApplication extends Application {
 
 
-    public QuizzApplication(Injector injector) {
+    public QuizzApplication(Context context, Injector injector) {
+        super(context);
         this.injector = injector;
+        getContext().getAttributes().put(TemplateEngine.class.getName(), injector.getInstance(TemplateEngine.class));
     }
 
     @Override

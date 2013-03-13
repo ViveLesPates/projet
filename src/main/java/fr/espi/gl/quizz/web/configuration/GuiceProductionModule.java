@@ -5,8 +5,6 @@ import com.google.inject.Provides;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
-import javax.inject.Singleton;
-
 public class GuiceProductionModule extends AbstractModule{
 
     @Override
@@ -15,7 +13,6 @@ public class GuiceProductionModule extends AbstractModule{
     }
 
     @Provides
-    @Singleton
     public TemplateEngine templateEngine() {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setTemplateMode("HTML5");
