@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <dependencies>
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -48,7 +47,22 @@
             <artifactId>guice</artifactId>
             <version>3.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.mongolink</groupId>
+            <artifactId>mongolink</artifactId>
+            <version>0.0.14</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongolink</groupId>
+            <artifactId>mongolink-testtools</artifactId>
+            <version>0.0.14</version>
+        </dependency>
     </dependencies>
-
+    <repositories>
+        <repository>
+            <id>MongoLink</id>
+            <url>http://repository-mongolink.forge.cloudbees.com/release/</url>
+        </repository>
+    </repositories>
 
 </project>
