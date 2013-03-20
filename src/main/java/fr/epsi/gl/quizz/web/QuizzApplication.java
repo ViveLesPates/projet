@@ -1,7 +1,7 @@
-package fr.espi.gl.quizz.web;
+package fr.epsi.gl.quizz.web;
 
 import com.google.inject.Injector;
-import fr.espi.gl.quizz.web.configuration.QuizzRouter;
+import fr.epsi.gl.quizz.web.configuration.QuizzRouter;
 import org.restlet.Application;
 import org.restlet.Context;
 import org.restlet.Restlet;

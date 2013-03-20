@@ -1,11 +1,13 @@
 package fr.epsi.gl.quizz.persistance.mongo;
 
+import fr.epsi.gl.quizz.commande.FournisseurMongoSession;
 import fr.epsi.gl.quizz.domaine.question.FabriqueQuestion;
 import fr.epsi.gl.quizz.domaine.question.Question;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
+import org.mongolink.MongoSession;
 import org.mongolink.test.MongolinkRule;
 
 import static org.fest.assertions.Assertions.*;
@@ -17,7 +19,17 @@ public class EntrepotQuestionMongoTest {
 
     @Before
     public void setUp()  {
-        entrepot = new EntrepotQuestionMongo(mongolinkRule.getCurrentSession());
+        entrepot = new EntrepotQuestionMongo(new FournisseurMongoSession() {
+            @Override
+            public MongoSession get() {
+                return mongolinkRule.getCurrentSession();
+            }
+
+            @Override
+            public void nettoie() {
+
+            }
+        });
     }
 
     @Test

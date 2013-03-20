@@ -1,4 +1,4 @@
-package fr.espi.gl.quizz.web.representation;
+package fr.epsi.gl.quizz.web.representation;
 
 import com.google.common.collect.Maps;
 import org.restlet.data.MediaType;
@@ -33,7 +33,7 @@ public class ModeleEtVue {
         return type;
     }
 
-    public ModeleEtVue avec(String clef, String valeur) {
+    public ModeleEtVue avec(String clef, Object valeur) {
         data.put(clef, valeur);
         return this;
     }

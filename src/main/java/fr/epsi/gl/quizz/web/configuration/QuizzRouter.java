@@ -1,8 +1,11 @@
-package fr.espi.gl.quizz.web.configuration;
+package fr.epsi.gl.quizz.web.configuration;
 
 import com.google.inject.Injector;
-import fr.espi.gl.quizz.web.resource.HelloResource;
-import fr.espi.gl.quizz.web.restlet.GuiceFinder;
+import fr.epsi.gl.quizz.web.resource.AccueilRessource;
+import fr.epsi.gl.quizz.web.resource.question.NouvelleQuestionRessource;
+import fr.epsi.gl.quizz.web.resource.question.QuestionRessource;
+import fr.epsi.gl.quizz.web.resource.question.QuestionsRessource;
+import fr.epsi.gl.quizz.web.restlet.GuiceFinder;
 import org.restlet.Context;
 import org.restlet.resource.Finder;
 import org.restlet.resource.ServerResource;
@@ -17,7 +20,10 @@ public class QuizzRouter extends Router {
     }
 
     private void attacheRoutes() {
-        attach("/hello", HelloResource.class);
+        attach("/", AccueilRessource.class);
+        attach("/nouvelle-question", NouvelleQuestionRessource.class);
+        attach("/questions", QuestionsRessource.class);
+        attach("/questions/{id}", QuestionRessource.class);
     }
 
     @Override

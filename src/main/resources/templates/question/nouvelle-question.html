@@ -1,0 +1,28 @@
+<html lang="fr">
+<head>
+
+</head>
+<body>
+    <span>Nouvelle Question</span>
+
+    <form action="/questions" method="post">
+        <label for="libelle">Libellé</label>
+        <input type="text" required="true" id="libelle" name="libelle"/>
+        <button type="submit">Créer la question</button>
+    </form>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+           $("form").submit(function(event) {
+               console.log("yaa");
+               var formulaire = $(this);
+               $.post(formulaire.attr("action"), formulaire.serialize(), function(data, textStatus, jqXhr) {
+                   window.location = jqXhr.getResponseHeader("Location");
+
+               });
+               return false;
+           });
+        });
+    </script>
+</body>
+</html>

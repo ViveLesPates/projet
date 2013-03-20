@@ -1,7 +1,7 @@
-package fr.espi.gl.quizz.web;
+package fr.epsi.gl.quizz.web;
 
-import fr.espi.gl.quizz.web.representation.ModeleEtVue;
-import fr.espi.gl.quizz.web.resource.HelloResource;
+import fr.epsi.gl.quizz.web.representation.ModeleEtVue;
+import fr.epsi.gl.quizz.web.resource.AccueilRessource;
 import org.junit.Test;
 
 import static org.fest.assertions.Assertions.*;
@@ -10,8 +10,9 @@ public class HelloResourceTest {
 
     @Test
     public void ditbienHello() {
-        ModeleEtVue coucou = new HelloResource().hello();
+        ModeleEtVue coucou = new AccueilRessource().hello();
 
         assertThat(coucou.getTemplate()).isEqualTo("/accueil");
     }
+
 }

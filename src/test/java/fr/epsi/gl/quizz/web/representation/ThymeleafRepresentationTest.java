@@ -1,4 +1,4 @@
-package fr.espi.gl.quizz.web.representation;
+package fr.epsi.gl.quizz.web.representation;
 
 import org.junit.Test;
 import org.restlet.data.MediaType;

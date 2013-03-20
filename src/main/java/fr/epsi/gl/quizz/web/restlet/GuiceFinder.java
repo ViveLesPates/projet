@@ -1,4 +1,4 @@
-package fr.espi.gl.quizz.web.restlet;
+package fr.epsi.gl.quizz.web.restlet;
 
 import com.google.inject.Injector;
 import org.restlet.Context;

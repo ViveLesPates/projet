@@ -1,10 +1,10 @@
-package fr.espi.gl.quizz.web.resource;
+package fr.epsi.gl.quizz.web.resource;
 
-import fr.espi.gl.quizz.web.representation.ModeleEtVue;
+import fr.epsi.gl.quizz.web.representation.ModeleEtVue;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
-public class HelloResource extends ServerResource {
+public class AccueilRessource extends ServerResource {
 
     @Get
     public ModeleEtVue hello() {
