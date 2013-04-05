@@ -15,6 +15,11 @@
             <version>13.0.1</version>
         </dependency>
         <dependency>
+            <groupId>org.restlet.jse</groupId>
+            <artifactId>org.restlet</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
@@ -31,11 +36,6 @@
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.restlet.jse</groupId>
-            <artifactId>org.restlet</artifactId>
-            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
@@ -63,6 +63,12 @@
             <id>MongoLink</id>
             <url>http://repository-mongolink.forge.cloudbees.com/release/</url>
         </repository>
+        <repository>
+        <id>maven-restlet</id>
+            <name>Public online Restlet repositery</name>
+        <url>http://maven.restlet.org</url>
+        </repository>
+
     </repositories>
 
 </project>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_quizz" default="compile.module.quizz">
+  <dirname property="module.quizz.basedir" file="${ant.file.module_quizz}"/>
+  
+  <property name="module.jdk.home.quizz" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.quizz" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.quizz" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.quizz" value="${compiler.args}"/>
+  
+  <property name="quizz.output.dir" value="${module.quizz.basedir}/target/classes"/>
+  <property name="quizz.testoutput.dir" value="${module.quizz.basedir}/target/test-classes"/>
+  
+  <path id="quizz.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="quizz.module.production.classpath">
+    <path refid="${module.jdk.classpath.quizz}"/>
+  </path>
+  
+  <path id="quizz.runtime.production.module.classpath">
+    <pathelement location="${quizz.output.dir}"/>
+  </path>
+  
+  <path id="quizz.module.classpath">
+    <path refid="${module.jdk.classpath.quizz}"/>
+    <pathelement location="${quizz.output.dir}"/>
+  </path>
+  
+  <path id="quizz.runtime.module.classpath">
+    <pathelement location="${quizz.testoutput.dir}"/>
+    <pathelement location="${quizz.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.quizz">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.quizz">
+    <patternset refid="excluded.from.module.quizz"/>
+  </patternset>
+  
+  <path id="quizz.module.sourcepath">
+    <dirset dir="${module.quizz.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="quizz.module.test.sourcepath">
+    <dirset dir="${module.quizz.basedir}">
+      <include name="src/test/java"/>
+      <include name="src/test/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.quizz" depends="compile.module.quizz.production,compile.module.quizz.tests" description="Compile module quizz"/>
+  
+  <target name="compile.module.quizz.production" depends="register.custom.compilers" description="Compile module quizz; production classes">
+    <mkdir dir="${quizz.output.dir}"/>
+    <javac2 destdir="${quizz.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.quizz}/javac">
+      <compilerarg line="${compiler.args.quizz}"/>
+      <bootclasspath refid="quizz.module.bootclasspath"/>
+      <classpath refid="quizz.module.production.classpath"/>
+      <src refid="quizz.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.quizz"/>
+    </javac2>
+    
+    <copy todir="${quizz.output.dir}">
+      <fileset dir="${module.quizz.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.quizz.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.quizz.tests" depends="register.custom.compilers,compile.module.quizz.production" description="compile module quizz; test classes" unless="skip.tests">
+    <mkdir dir="${quizz.testoutput.dir}"/>
+    <javac2 destdir="${quizz.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.quizz}/javac">
+      <compilerarg line="${compiler.args.quizz}"/>
+      <bootclasspath refid="quizz.module.bootclasspath"/>
+      <classpath refid="quizz.module.classpath"/>
+      <src refid="quizz.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.quizz"/>
+    </javac2>
+    
+    <copy todir="${quizz.testoutput.dir}">
+      <fileset dir="${module.quizz.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.quizz.basedir}/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.quizz" description="cleanup module">
+    <delete dir="${quizz.output.dir}"/>
+    <delete dir="${quizz.testoutput.dir}"/>
+  </target>
+</project>
