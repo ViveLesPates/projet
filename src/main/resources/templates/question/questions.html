@@ -1,5 +1,7 @@
-<html lang="fr">
+<!DOCTYPE html>
+<html>
 <head>
+    <title>Toutes les questions</title>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet"/>
     <link href="//netdna.bootstrapcdn.com/bootswatch/2.3.1/slate/bootstrap.min.css" rel="stylesheet"/>
@@ -20,30 +22,19 @@
 <div class="container">
     <div class="row-fluid">
         <div class="span12">
-            <h1>Nouvelle Question</h1>
-
-            <form action="/questions" method="post" >
-                <label for="libelle">Libellé</label>
-                <input type="text" required="true" id="libelle" name="libelle"/>
-                <br/>
-                <button type="submit" class="btn">Créer la question</button>
-            </form>
+            <h1>Toutes les questions</h1>
+            <table class="table">
+                <tr>
+                    <th>Libellé</th>
+                </tr>
+                <tr th:each="question : ${questions}">
+                    <td><a href="" th:href="'/questions/' + ${question.id}" th:text="${question.libellé}">Libellé</a>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $("form").submit(function (event) {
-            console.log("yaa");
-            var formulaire = $(this);
-            $.post(formulaire.attr("action"), formulaire.serialize(), function (data, textStatus, jqXhr) {
-                window.location = jqXhr.getResponseHeader("Location");
 
-            });
-            return false;
-        });
-    });
-</script>
 </body>
 </html>

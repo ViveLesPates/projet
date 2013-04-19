@@ -3,21 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>fr.epsi.gl</groupId>
     <artifactId>quizz</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <dependencies>
+        <dependency>
+            <groupId>org.jongo</groupId>
+            <artifactId>jongo</artifactId>
+            <version>0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.9-RC1</version>
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>13.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.restlet.jse</groupId>
-            <artifactId>org.restlet</artifactId>
-            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -33,9 +37,14 @@
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
+            <artifactId>mockito-core</artifactId>
             <version>1.9.5</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.restlet.jse</groupId>
+            <artifactId>org.restlet</artifactId>
+            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
@@ -64,11 +73,9 @@
             <url>http://repository-mongolink.forge.cloudbees.com/release/</url>
         </repository>
         <repository>
-        <id>maven-restlet</id>
-            <name>Public online Restlet repositery</name>
-        <url>http://maven.restlet.org</url>
+            <id>Maven-restlet</id>
+   	    <name>Public online Restlet repositery</name>
+            <url>http://maven.restlet.org</url>
         </repository>
-
     </repositories>
-
 </project>
