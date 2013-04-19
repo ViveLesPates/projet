@@ -15,7 +15,8 @@
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet</artifactId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
         </dependency>
         <dependency>
             <groupId>org.reflections</groupId>
@@ -81,6 +82,15 @@
    	    <name>Public online Restlet repositery</name>
             <url>http://maven.restlet.org</url>
         </repository>
+        <repository>
+            <id>javax.servlet</id>
+            <url>http://mvnrepository.com/artifact/javax.servlet/servlet-api/2.5</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.release</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
+        </repository>
     </repositories>
   <build>
     <plugins>
@@ -90,11 +100,11 @@
         <version>2.3</version>
         <configuration>
           <outputDirectory>target/webapp</outputDirectory>
-	  <warName>QuizzWar</warName>
+	      <warName>QuizzWar</warName>
+          <webXml>web.xml</webXml>
         </configuration>
       </plugin>
     </plugins>
   </build>
-      
 </project>
 
